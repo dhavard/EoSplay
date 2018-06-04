@@ -45,16 +45,16 @@ class SimpleTabs extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Tabs value={value} onChange={this.handleChange}>
-            <Tab label="Item One" />
             <Tab label="Demo" />
             <Tab label="Battle Classes" />
-            <Tab label="Item Three" />
+            <Tab label="Crafting Classes" />
+            <Tab label="Gathering Classes" />
           </Tabs>
         </AppBar>
-        {value === 0 && <TabContainer>Test One</TabContainer>}
-        {value === 1 && <TabContainer><CharacterContainer /></TabContainer>}
-        {value === 2 && <TabContainer><CharacterListContainer /></TabContainer>}
-        {value === 3 && <TabContainer>Test Three</TabContainer>}
+        {value === 0 && <TabContainer><CharacterContainer /></TabContainer>}
+        {value === 1 && <TabContainer><CharacterListContainer roleIds={[1, 2, 3, 4, 5, 6, 7, 26, 29, 31, 32, 33, 34, 35]}/></TabContainer>}
+        {value === 2 && <TabContainer><CharacterListContainer roleIds={[8, 9, 10, 11, 12, 13, 14, 15]}/></TabContainer>}
+        {value === 3 && <TabContainer><CharacterListContainer roleIds={[16, 17, 18]}/></TabContainer>}
       </div>
     );
   }

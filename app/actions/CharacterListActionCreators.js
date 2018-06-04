@@ -108,8 +108,7 @@ function getItemData({resolve, reject}, current, characters) {
             api
             .get("https://api.xivdb.com/character/" + chars[current- 1] + "?data=gearsets")
             .then(gearResponse => {
-                console.log({c: characterResponse.data.name, g: gearResponse.data.length, cf: characterResponse, gf: gearResponse});
-                //characterResponse.data.gears = gearResponse.data;
+                //console.log({c: characterResponse.data.name, g: gearResponse.data.length, cf: characterResponse, gf: gearResponse});
                 
                 const m = new Map();
                 gearResponse.data.map( (gear) => {
@@ -120,7 +119,7 @@ function getItemData({resolve, reject}, current, characters) {
                 characterResponse.data.gears = Object.values(characterResponse.data.data.classjobs);
                 characterResponse.data.gears.map( (g) => {
                     g.classjob_id = g.name;
-                    g.role = { name: g.name };
+                    g.role = { name: g.name, id: g.id };
 
                     if( m.has(g.name) ) {
                         g.item_level_avg = m.get( g.name ).item_level_avg;
@@ -128,8 +127,6 @@ function getItemData({resolve, reject}, current, characters) {
 
                     return g;
                 })
-                
-                console.log(characterResponse.data);
 
                 characters.push(characterResponse.data);
                 getItemData( {resolve, reject}, current, characters );

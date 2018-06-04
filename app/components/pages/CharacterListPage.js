@@ -70,8 +70,11 @@ export default class CharacterListPage extends Component {
             <TableCell>Name</TableCell>
             {characterListData[0].gears.map( n => {
               var k = "header_" + n.classjob_id;
+              if( !this.props.roleIds.includes( n.role.id ) ) {
+                return;
+              }
               return (
-                <TableCell numeric key={k}>{n.role.name}</TableCell>
+                <TableCell key={k}>{n.role.name} ({n.role.id})</TableCell>
               );
             })}
           </TableRow>
@@ -87,6 +90,9 @@ export default class CharacterListPage extends Component {
                 </TableCell>
                 {n.gears.map( g => { 
                   var j = "gear_" + n.lodestone_id + "_" + g.classjob_id;
+                  if( !this.props.roleIds.includes( g.role.id ) ) {
+                    return;
+                  }
                   if( g.level < 70 ) {
                     return (<TableCell key={j}></TableCell>);                  
                   } else {
