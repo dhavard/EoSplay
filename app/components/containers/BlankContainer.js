@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import { Container } from "flux/utils";
 import BlankPage from "../pages/BlankPage";
-import DummyStore from "../../stores/LineChartStore";
 
 class BlankContainer extends Component {
   static getStores() {
-    return [DummyStore];
+    return [];
   }
 
   static calculateState() {
     return {
-      data: DummyStore.getState()
+      data: []
     };
   }
 
