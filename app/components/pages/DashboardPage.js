@@ -1,5 +1,3 @@
-import CharacterContainer from "../containers/CharacterContainer";
-import BlankContainer from "../containers/BlankContainer";
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -7,6 +5,9 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
+import CharacterContainer from "../containers/CharacterContainer";
+import CharacterListContainer from "../containers/CharacterListContainer";
+import BlankContainer from "../containers/BlankContainer";
 
 function TabContainer(props) {
   return (
@@ -46,13 +47,13 @@ class SimpleTabs extends React.Component {
           <Tabs value={value} onChange={this.handleChange}>
             <Tab label="Item One" />
             <Tab label="Demo" />
-            <Tab label="Item Two" />
+            <Tab label="Battle Classes" />
             <Tab label="Item Three" />
           </Tabs>
         </AppBar>
         {value === 0 && <TabContainer>Test One</TabContainer>}
         {value === 1 && <TabContainer><CharacterContainer /></TabContainer>}
-        {value === 2 && <TabContainer>Test Two</TabContainer>}
+        {value === 2 && <TabContainer><CharacterListContainer /></TabContainer>}
         {value === 3 && <TabContainer>Test Three</TabContainer>}
       </div>
     );

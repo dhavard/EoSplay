@@ -4,7 +4,7 @@ const config = (env = {}) => {
   const plugins = [
     new webpack.DefinePlugin({
       'process.env': {
-        API_URL: JSON.stringify(process.env.API_URL || 'http://api.xivdb.com'),
+        API_URL: JSON.stringify(process.env.API_URL || 'https://api.xivdb.com'),
       },
     }),
   ];

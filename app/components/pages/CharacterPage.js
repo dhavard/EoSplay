@@ -60,7 +60,7 @@ export default class CharacterPage extends Component {
 
     return (
       <Paper>
-      <Typography variant="Title" color="primary" align="center">Character Stats</Typography>
+      <Typography variant="title" color="primary" align="center">Character Stats</Typography>
       <Typography variant="subheading" color="textSecondary" align="center">Echo of Stars</Typography>
       <Table>
         <TableHead>
