@@ -17,7 +17,7 @@ class App extends Component {
 }
 
 render(
-  <Router history={browserHistory}>
+  <Router history={browserHistory} basename={process.env.PUBLIC_URL}>
     <Route path="/" component={App}>
       <IndexRoute component={DashboardPage} />
       <Route path="/dashboard" component={DashboardPage} />
