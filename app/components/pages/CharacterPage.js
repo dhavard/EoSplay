@@ -1,5 +1,13 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
+import { withStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 
 export default class CharacterPage extends Component {
   static propTypes = {
@@ -22,10 +30,23 @@ export default class CharacterPage extends Component {
 
   static defaultProps = {};
 
+  
+
   render() {
     const {
       characterData
     } = this.props;
+
+    const styles = theme => ({
+      root: {
+        width: '100%',
+        marginTop: theme.spacing.unit * 3,
+        overflowX: 'auto',
+      },
+      table: {
+        minWidth: 700,
+      },
+    });
 
     if (
       characterData===null || !characterData.gears
@@ -38,44 +59,38 @@ export default class CharacterPage extends Component {
     }
 
     return (
-        <div>
-        <div>
-          <div> Character Stats </div>
-          <div> Echo of Stars </div>
-        </div>
-          <div>
-            <div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Class</th>
-                    <th>Level</th>
-                    <th>Item Level</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {characterData.gears.map(n => {
-                    var k = n.lodestone_id + "_" + n.classjob_id;
+      <Paper>
+      <Typography variant="Title" color="primary" align="center">Character Stats</Typography>
+      <Typography variant="subheading" color="textSecondary" align="center">Echo of Stars</Typography>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Class</TableCell>
+            <TableCell numeric>Level</TableCell>
+            <TableCell numeric>Item Level</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {characterData.gears.map(n => {
+            var k = n.lodestone_id + "_" + n.classjob_id;
 
-                    if( n.level < 70 ) {
-                      return
-                    }
+            if( n.level < 70 ) {
+              return
+            }
 
-                    return (
-                      <tr key={k}>
-                        <td scope="row">
-                          {n.role.name}
-                        </td>
-                        <td>{n.level}</td>
-                        <td>{n.item_level_avg}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </div>
-          </div>
+            return (
+              <TableRow key={k}>
+                <TableCell component="th" scope="row">
+                  {n.role.name}
+                </TableCell>
+                <TableCell numeric>{n.level}</TableCell>
+                <TableCell numeric>{n.item_level_avg}</TableCell>
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
+    </Paper>
     );
   }
 }
