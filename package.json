@@ -10,7 +10,8 @@
     "lint": "eslint app/** --fix"
   },
   "keywords": [],
-  "author": "",
+  "author": "dhavard",
+  "homepage" : "https://dhavard.github.io/EoSplay",
   "license": "ISC",
   "jest": {
     "unmockedModulePathPatterns": [
