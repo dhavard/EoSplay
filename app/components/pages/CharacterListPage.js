@@ -9,6 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Badge from '@material-ui/core/Badge';
+import Star from '@material-ui/icons/Star';
 
 export default class CharacterListPage extends Component {
   static propTypes = {
@@ -101,13 +102,10 @@ export default class CharacterListPage extends Component {
                   } else {
                     if (!g.item_level_avg)  {
                       return (<TableCell key={j}><div>{g.level}</div></TableCell>);  
-                    } else if (!g.gear) {
+                    } else if ( !craftRoleIds.includes( g.role.id ) || !g.gear || !g.gear.slot_soulcrystal ) {
                       return (<TableCell key={j}><div>{g.level}</div><div>({g.item_level_avg})</div></TableCell>);  
                     } else {
-                      return (<TableCell key={j}><div>{g.level}<Badge badgeContent={4} color="primary">
-                            <Star />
-                          </Badge>
-                          </div><div>({g.item_level_avg})</div></TableCell>);  
+                      return (<TableCell key={j}><div>{g.level}<Star color="secondary"/></div><div>({g.item_level_avg})</div></TableCell>);  
                     }
                   }
                 })}

@@ -124,7 +124,7 @@ function getItemData({resolve, reject}, current, characters) {
                     if( m.has(g.name) ) {
                         var gi = m.get( g.name );
                         g.item_level_avg = gi.item_level_avg;
-                        g.gear.slot_soulcrystal = gi.gear.slot_soulcrystal;
+                        g.gear = { slot_soulcrystal: gi.gear.slot_soulcrystal };
                     }
 
                     return g;
